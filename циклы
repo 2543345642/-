@@ -1,16 +1,27 @@
-counter = 0
+import os
 
+way_1 = True
+way_2 = True
+way_3 = True
+name_user = input("введите герою имя")
 
+game = True
 
+while game:
+	os.system("cls")
+	# Сцена у камня
+	if way_1 or way_2 or way_3:
+		print(f"подъезжает {name_user} к трем дорожкам, на перекрестке камень лежит, а на том камне написано: «Кто вправо поедет - тому убитым быть, кто влево поедет - тому богатым быть, а кто прямо поедет - тому женатым быть».")
+		print("1 - Поеду-ка я по той дорожке, где убитому быть. Умру в чистом поле, как славный богатырь!")
+		print("2 - Ну, поеду теперь, где женатому быть!")
+		print("3 - Ну, поеду теперь в дорожку, где богатому быть.")
 
-while counter < 1000000:
-	print("мяу")
-	print(321)
-	counter += 1 
+		name_True = 0
+		while name_user != 1 or name_user != 2 or name_user != 3:
+			user_choice = int(input("введите номер ответа и нажмите Enter"))
+		print(f"выбрал вариант {name_user}") #FIXME 
 
-	if counter > 100:
-		print("конец")
-		break
-else:
-	print("ицкл завершён")
-	
+	else:
+		print("текст, если все дороги пройдены")
+	input("нажмите Enter для продолжения игры")
+print("конец игры")
