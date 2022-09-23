@@ -1,0 +1,16 @@
+counter = 0
+
+
+
+
+while counter < 1000000:
+	print("мяу")
+	print(321)
+	counter += 1 
+
+	if counter > 100:
+		print("конец")
+		break
+else:
+	print("ицкл завершён")
+	
