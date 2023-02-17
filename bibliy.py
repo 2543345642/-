@@ -1,9 +1,10 @@
+import sys
 import os
 LIBRARY = [
 
     {
         "название": "Тестовая книга",
-        "автор": "Каыфавф",
+        "автор": "Влад",
         "год": 1232
     }
 
@@ -51,8 +52,6 @@ def show_library():
 def delete_book() -> None:
     """
     Удаляет книгу или выводит сообщение, что нету такой книги.
-
-
     """
     #нету книг
     if not LIBRARY:
@@ -80,7 +79,7 @@ def search_by_number() -> None:
     if not LIBRARY:
         print("В библеотеке нету книг!!!")
         return
-    book_number = input("Введите номер(ЦЫФРУ) книги, которую нужно удалить")
+    book_number = input("Введите номер(ЦЫФРУ) книги, которую нужно найти")
     if not book_number.isdigit():
         print("Ошибка!Номер книги должен быть числом")
         return
@@ -97,6 +96,28 @@ def search_by_number() -> None:
     print("автор", book["автор"])
     print("год", book["год"])
 
+
+def search_by_key(book_key: str) -> None:
+    """
+    проверки (-)
+    нахождение книги(-)
+    """
+
+    if not LIBRARY:
+        print("В библеотеке нету книг!!!")
+        return
+    book_value = input(f"Введите {book_key} книги, которую нужно найти")
+    for book in LIBRARY:
+        if book[book_key] == book_value:
+            print("название", book["название"])
+            print("автор", book["автор"])
+            print("год", book["год"])
+
+def exit():
+    sys.exit()
+
+
+
 print("Здраствуйте")
 
 
@@ -104,17 +125,19 @@ def menu():
     while True:
         options = [
             ["Показать все книги", lambda: show_library()],
-            ["показать книги по номеру", lambda: search_by_number("год")],
+            ["показать книги по номеру", lambda: search_by_number()],
             ["добавить книгу", lambda: add_book()],
             ["удалить книгу", lambda: delete_book()],
+            ["показать книгу по автору:", lambda: search_by_key("автор")],
+            ["показать книгу по году:", lambda: search_by_key("год")],
+            ["показать книгу по названию:", lambda: search_by_key("название")],
+            ["выйти", lambda: exit()],
         ]
 
         for num, option in enumerate(options, 1):
             print(f"{num}. {option[0]}")
 
-        user_option = input("введите номер варианта и нажмите ENTER:")
+        user_option = input("введите номер варианта и нажмите ENTER: ")
         idx = int(user_option) - 1
         options[idx][1]()
-
-
 menu()
